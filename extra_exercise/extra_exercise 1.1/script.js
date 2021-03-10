@@ -18,7 +18,12 @@ class Hotel {
     }
 
     showAvailability() {
-        AvailablitityMethod;
+        if (this.numberOfNights >= document.getElementById("userInput").value) {
+            document.getElementById("outputComp").innerHTML += `<input type="button" value="I'll reserve at ${this.hotelName}"> <br>`;
+        } else {
+            document.getElementById("outputComp").innerHTML += `<p>Sorry, no available nights for ${this.hotelName}</p>`;
+            console.log(this.hotelName);
+        }
     }
 }
 
@@ -31,25 +36,20 @@ var hotel2 = new Hotel("Family-Pavillions","3rd Rock from the Sun","image");
 var hotel3 = new Hotel("Luxury-Bunker","Coal Shaft Level -1128","image");
 // document.write(hotel3.createProfile());
 
-
-
+// function compareNights() {
+//     var guestRequest = document.getElementById("userInput").value;
+//     if (guestRequest<=hotel1.numberOfNights) {
+//         document.getElementById("outputComp").innerHTML = `<input type="button" value="I'll reserve">`;
+//     } else {
+//         document.getElementById("outputComp").innerHTML = `<p>Sorry, no available nights for ${hotel1.hotelName}</p>`
+//     }
+// }
 var alleHotels = [hotel1, hotel2, hotel3];
 
 for (let i of alleHotels) {
-    console.log(i.createProfile())
+    document.getElementById("outputComp").innerHTML += i.createProfile();
+    document.getElementById("requestBut").addEventListener("click", function (){i.showAvailability()});
 }
+console.log(hotel1.hotelName)
 
-// function compareNights() {
-//     var outputBildschirm;
-//     var guestRequest = document.getElementById("userInput").value;
-//     for (let i in alleHotels) {
-//         document.getElementById("outputComp").innerHTML = "Hotel" + alleHotels[i].hotelName;
-//         if (guestRequest<=i.numberOfNights) {
-//             document.getElementById("outputComp").innerHTML += `<input type="button" value="I'll reserve">`;
-//         } else {
-//             document.getElementById("outputComp").innerHTML += `<p>Sorry, no available nights for ${i.hotelName}</p>`
-//         }
-//     }
-// }   
 
-// document.getElementById("requestBut").addEventListener("click",compareNights);
